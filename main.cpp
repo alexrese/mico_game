@@ -30,55 +30,125 @@ int main()
     Sleep(3000);
     system("clear||cls");
 
-    int acertos = 0;
-    int lin1, col1, lin2, col2;
-    while(acertos < 8){
-        cout<<"Digite duas posi��es validas de 0-3 para revelar"<<endl;
-        do{
-            cout<<"Digite a linha 1: ";
-            cin>>lin1;
-            cout<<"Digite a coluna 1: ";
-            cin>>col1;
-        }while(mico[lin1][col1] != "#");
-        mico[lin1][col1] = to_string(memoria[lin1][col1]);
+    int escolha;
+    cout<<"Escolha uma opção:"<<endl;
+    cout<<"1-manual"<<endl;
+    cout<<"2-automatico"<<endl;
+    cin>> escolha;
+
+    if(escolha == 2){
+        int acertos = 0;
+        int lin1, col1, lin2, col2;
+        while(acertos < 8){
+            cout<<"Digite duas posições validas de 0-3 para revelar"<<endl;
+            do{
+                cout<<"Digite a linha 1: ";
+                lin1=rand()%4;
+                cout<<lin1<<endl;
+                //Sleep(1000);
+                cout<<"Digite a coluna 1: ";
+                col1=rand()%4;
+                cout<<col1<<endl;
+                //Sleep(1000);
+            }while(mico[lin1][col1] != "#");
+            mico[lin1][col1] = to_string(memoria[lin1][col1]);
 
 
-        for(int i=0; i<4; i++){
-            for(int j=0; j<4; j++){
-                cout<<mico[i][j]<<"\t";
+            for(int i=0; i<4; i++){
+                for(int j=0; j<4; j++){
+                    cout<<mico[i][j]<<"\t";
+                }
+                cout<<endl;
             }
-            cout<<endl;
-        }
-        do{
-            cout<<"Digite uma posi��o diferente de # "<<endl;
-            cout<<"Digite a linha 2: ";
-            cin>>lin2;
-            cout<<"Digite a coluna 2: ";
-            cin>>col2;
-        }while (mico[lin2][col2] != "#");
-        mico[lin2][col2] = to_string(memoria[lin2][col2]);
+            do{
+                cout<<"Digite uma posição diferente de # "<<endl;
+                cout<<"Digite a linha 2: ";
+                lin2=rand()%4;
+                cout<<lin2<<endl;
+                //Sleep(1000);
+                cout<<"Digite a coluna 2: ";
+                col2=rand()%4;
+                cout<<col2<<endl;
+                //Sleep(1000);
+            }while (mico[lin2][col2] != "#");
+            mico[lin2][col2] = to_string(memoria[lin2][col2]);
 
-        for(int i=0; i<4; i++){
-            for(int j=0; j<4; j++){
-                cout<<mico[i][j]<<"\t";
+            for(int i=0; i<4; i++){
+                for(int j=0; j<4; j++){
+                    cout<<mico[i][j]<<"\t";
+                }
+                cout<<endl;
             }
-            cout<<endl;
-        }
-        Sleep(1000);
-        system("clear||cls");
+            //Sleep(1000);
+            system("clear||cls");
 
-        if(memoria[lin1][col1] != memoria[lin2][col2]){
-            mico[lin1][col1] = "#";
-            mico[lin2][col2] = "#";
-        }else{
-            acertos++;
-        }
-
-        for(int i=0; i<4; i++){
-            for(int j=0; j<4; j++){
-                cout<<mico[i][j]<<"\t";
+            if(memoria[lin1][col1] != memoria[lin2][col2]){
+                mico[lin1][col1] = "#";
+                mico[lin2][col2] = "#";
+            }else{
+                acertos++;
             }
-            cout<<endl;
+
+            for(int i=0; i<4; i++){
+                for(int j=0; j<4; j++){
+                    cout<<mico[i][j]<<"\t";
+                }
+                cout<<endl;
+            }
+        }
+    }else{
+        if(escolha == 1){
+            int acertos = 0;
+            int lin1, col1, lin2, col2;
+            while(acertos < 8){
+                cout<<"Digite duas posições validas de 0-3 para revelar"<<endl;
+                do{
+                    cout<<"Digite a linha 1: ";
+                    cin>>lin1;
+                    cout<<"Digite a coluna 1: ";
+                    cin>>col1;
+                }while(mico[lin1][col1] != "#");
+                mico[lin1][col1] = to_string(memoria[lin1][col1]);
+
+
+                for(int i=0; i<4; i++){
+                    for(int j=0; j<4; j++){
+                        cout<<mico[i][j]<<"\t";
+                    }
+                    cout<<endl;
+                }
+                do{
+                    cout<<"Digite uma posição diferente de # "<<endl;
+                    cout<<"Digite a linha 2: ";
+                    cin>>lin2;
+                    cout<<"Digite a coluna 2: ";
+                    cin>>col2;
+                }while (mico[lin2][col2] != "#");
+                mico[lin2][col2] = to_string(memoria[lin2][col2]);
+
+                for(int i=0; i<4; i++){
+                    for(int j=0; j<4; j++){
+                        cout<<mico[i][j]<<"\t";
+                    }
+                    cout<<endl;
+                }
+                Sleep(1000);
+                system("clear||cls");
+
+                if(memoria[lin1][col1] != memoria[lin2][col2]){
+                    mico[lin1][col1] = "#";
+                    mico[lin2][col2] = "#";
+                }else{
+                    acertos++;
+                }
+
+                for(int i=0; i<4; i++){
+                    for(int j=0; j<4; j++){
+                        cout<<mico[i][j]<<"\t";
+                    }
+                    cout<<endl;
+                }
+            }
         }
     }
 
